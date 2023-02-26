@@ -1,7 +1,12 @@
+///TODO FIX WIDTH AND HEIGHT!
+
 let c = document.getElementById("myCanvas");
-// c.style.width = "100%";
-// c.style.height = "100%";
 let ctx = c.getContext("2d");
+
+window.addEventListener("resize",function () {
+    c.width = window.innerWidth;
+    c.height = window.innerHeight;
+})
 
 let coordinates = [];
 
@@ -20,3 +25,5 @@ c.addEventListener("click",function(event) {
         ctx.stroke();
     }
 })
+
+
