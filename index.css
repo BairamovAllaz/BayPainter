@@ -1,0 +1,19 @@
+body {
+    display: block;
+}
+
+.topBar{
+    width: 100%;
+    height: 100px;
+    background-color: red;
+}
+
+.canvasBox{
+    width: 100%;
+    height: 500px;
+    background-color: green;
+}
+
+.myCanvas{
+    border: solid 1px black;
+}
