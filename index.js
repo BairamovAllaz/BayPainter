@@ -2,6 +2,8 @@
 
 let c = document.getElementById("myCanvas");
 let ctx = c.getContext("2d");
+c.width = window.innerWidth;
+c.height = window.innerHeight;
 
 window.addEventListener("resize",function () {
     c.width = window.innerWidth;
@@ -10,9 +12,8 @@ window.addEventListener("resize",function () {
 
 let coordinates = [];
 
-c.addEventListener("click",function(event) {
+c.addEventListener("mousemove",function(event) {
     const currentCoordinate = {"x" : event.x,"y" : event.y};
-    console.log(currentCoordinate);
     coordinates.push(currentCoordinate);
     const lastCoordinate = coordinates.length - 1;
     if(typeof coordinates[lastCoordinate - 1] != "undefined")
@@ -22,6 +23,7 @@ c.addEventListener("click",function(event) {
         ctx.beginPath();
         ctx.moveTo(startCoordinate.x,startCoordinate.y);
         ctx.lineTo(toCoordinate.x,toCoordinate.y);
+        ctx.strokeStyle = "#32a852"
         ctx.stroke();
     }
 })
