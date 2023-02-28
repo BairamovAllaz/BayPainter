@@ -34,12 +34,7 @@ ClearButton.addEventListener("click",function (event) {
 })
 
 DrawButton.addEventListener("click",function (event) {
-    if(DrawType.a == "Draw")
-    {
-        DrawType.a = "";
-    }else{
-        DrawType.a = "Draw";
-    }
+    DrawType.a = "Draw";
 })
 
 function OpenDrawLine(event)
@@ -63,12 +58,16 @@ DrawType.registerListener(function (val) {
     console.log("refis: " + val);
     if(val == "Draw")
     {
-        c.addEventListener("mousemove",(event) => OpenDrawLine(event),true);
+        c.addEventListener("click",(e) => {
+            c.addEventListener("mousemove",OpenDrawLine);
+            c.addEventListener("mouseup",function (ent) {
+                console.log("Moved");
+                c.removeEventListener("mousemove",OpenDrawLine);
+                console.log("Removed");
+            })
+        })
     }else{
-        let newElement = c.cloneNode(true);
-        if(c.parentNode){
-            c.parentNode.replaceChild(newElement,c);
-            c = newElement.cloneNode(true);
-        }
+        console.log("elsee")
+        c.addEventListener("mousemove",null);
     }
 })
